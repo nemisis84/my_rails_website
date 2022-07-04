@@ -1,0 +1,26 @@
+<div id="menu-outer">
+  <div class="table">
+    <ul id="horizontal-list">
+        <li>
+            <%=link_to "New Article", new_article_path%>
+        </li>
+
+        <li>
+            <%if not logged_in?%>
+                <%=link_to "Login", login_path%>
+            <%else%>
+                <%=link_to "Logout", "/logout"%>
+            <% end %>
+        </li>
+
+        <li>
+            <%=link_to "Home", root_path%>
+        </li>
+         <%if logged_in?%>
+            <li>
+                <%=link_to "Your user", user_path(current_user)%>
+            </li>
+        <%end %>
+    </ul>
+  </div>
+</div>

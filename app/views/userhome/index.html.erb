@@ -1,0 +1,7 @@
+<%= render "/layouts/navigate"%>
+
+<h1>User</h1>
+
+<%= render "/sessions/login", user: @user%> 
+
+<%= link_to "New user", new_user_path %>

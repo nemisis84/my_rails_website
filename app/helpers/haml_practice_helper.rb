@@ -1,0 +1,2 @@
+module HamlPracticeHelper
+end
