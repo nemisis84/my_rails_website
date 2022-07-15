@@ -8,13 +8,13 @@ module Visible
     end
 
     class_methods do 
-        def public_count
-            where(status: 'public').count
+        def status_count(article_status)
+            where(status: article_status).count
         end
     end
 
-    def archived?
-        status == 'archived'
+    def show_article(article_status)
+        status == article_status
     end
 
 end

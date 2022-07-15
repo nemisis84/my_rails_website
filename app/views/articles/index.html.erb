@@ -1,13 +1,23 @@
-<%= render "layouts/navigate"%>
+<%= render "layouts/navigate" %>
 
-<h1> Articles </h1>
- 
 
-Our blog has <%= Article.public_count %> articles and counting!
+Our blog has <%= Article.status_count('public')%> archived articles and counting! 
 
 <ul>
   <% @articles.each do |article| %>
-    <% unless article.archived? %>
+    <%if article.show_article('public') %>
+      <li>
+        <%= link_to article.title, article %>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
+
+Your private articles:
+
+<ul>
+  <% @articles.each do |article| %>
+    <%if article.show_article('private') && logged_in? && current_user.id == article.creator.to_i%>
       <li>
         <%= link_to article.title, article %>
       </li>
